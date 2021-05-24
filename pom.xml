@@ -17,6 +17,8 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    
+    <serverURL>http://rhpam7-kieserver-dmn-pmml-demo.apps.milano-91dc.open.redhat.com/services/rest/server</serverURL>
   </properties>
 
   <dependencies>
@@ -86,7 +88,7 @@
                 </systemProperty>
                 <systemProperty>
                   <key>serverURL</key>
-                  <value>http://rhpam7-kieserver-dmn-pmml-demo.apps.rdam-0bfc.openshiftworkshop.com/services/rest/server</value>
+                  <value>${serverURL}</value>
                 </systemProperty>
                 <systemProperty>
                   <key>username</key>
@@ -145,7 +147,7 @@
                 </systemProperty>
                 <systemProperty>
                   <key>serverURL</key>
-                  <value>http://rhpam7-kieserver-dmn-pmml-demo.apps.rdam-0bfc.openshiftworkshop.com/services/rest/server</value>
+                  <value>${serverURL}</value>
                 </systemProperty>
                 <systemProperty>
                   <key>username</key>
@@ -204,7 +206,7 @@
                 </systemProperty>
                 <systemProperty>
                   <key>serverURL</key>
-                  <value>http://rhpam7-kieserver-dmn-pmml-demo.apps.rdam-0bfc.openshiftworkshop.com/services/rest/server</value>
+                  <value>${serverURL}</value>
                 </systemProperty>
                 <systemProperty>
                   <key>username</key>
@@ -229,6 +231,49 @@
                 <systemProperty>
                   <key>nrOfEntries</key>
                   <value>-1</value>
+                </systemProperty>
+              </systemProperties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>dmn-tf</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <mainClass>com.redhat.gdemo.TrafficViolationDemo</mainClass>
+              <arguments>
+                <argument>10</argument>
+              </arguments>
+              <systemProperties>
+                <systemProperty>
+                  <key>serverURL</key>
+                  <value>http://insecure-rhpam7-install-kieserver-rhpam7-install-opentlc-mgr.apps.milano-91dc.open.redhat.com/services/rest/server</value>
+                </systemProperty>
+                <systemProperty>
+                  <key>username</key>
+                  <value>pamAdmin</value>
+                </systemProperty>
+                <systemProperty>
+                  <key>password</key>
+                  <value>redhatpam1!</value>
+                </systemProperty>
+                <systemProperty>
+                  <key>containerId</key>
+                  <value>traffic-violation_1.0.0-SNAPSHOT</value>
                 </systemProperty>
               </systemProperties>
             </configuration>
